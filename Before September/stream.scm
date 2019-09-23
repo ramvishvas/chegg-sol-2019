@@ -1,0 +1,1 @@
+(define s (cons-stream 1 (cons-stream 2 (cons-stream 3 nil))))

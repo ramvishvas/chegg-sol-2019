@@ -1,0 +1,17 @@
+; (get-second-list '((1 2) (3 4) (5 6)))
+; (2 4 6)
+(define (get-second-list l)
+	(cond ((null? l) '())
+		(else (cons (cadar l) (get-second-list (cdr l))))))
+
+; (get-first-list '((1 2) (3 4) (5 6)))
+; (1 3 5)
+(define (get-first-list l)
+	(cond ((null? l) '())
+		(else (cons (caar l) (get-first-list (cdr l))))))
+
+; (zip '((1 2) (3 4) (5 6)))
+; ((1 3 5) (2 4 6))
+(define (zip l)
+	(cond ((null? l) '())
+		(else (append (list (get-first-list l)) (list (get-second-list l))))))
