@@ -5,11 +5,16 @@
 		; get list of 1st element of List
 		(else (cons (car (car L)) (get-first-list (cdr L))))))
 
+; (get-first-list '((1 2) (3 4) (5 6) (7 8)))
+
 (define (get-second-list L)
 	; if list is null
 	(cond ((null? L) '())
 		; get list of 2st element of List
 		(else (cons (car (cdr (car L))) (get-second-list (cdr L))))))
+
+; (get-second-list '((1 2) (3 4) (5 6) (7 8)))
+
 
 (define (unzip L)
 	; if list is null
@@ -17,4 +22,4 @@
 		; appent 1st and 2nd list
 		(else (append (get-first-list L) (get-second-list L)))))
 
-(unzip '((1 2) (3 4) (5 6) (7 8)))
+; (unzip '((1 2) (3 4) (5 6) (7 8)))

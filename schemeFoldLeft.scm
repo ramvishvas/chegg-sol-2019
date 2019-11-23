@@ -1,0 +1,42 @@
+(define (newlength l)
+	(cond ((null? l) 0)
+		(else (+ 1 (newlength (cdr l))))
+	)
+)
+
+; (newlength '())
+; (newlength '(1 2 3))
+; (newlength '(3 (5 3) (7 (7) 7) 9))
+
+(define (addOne l)
+	(cond ((null? l) '())
+		(else (cons (+ 1 (car l)) (addOne (cdr l))))
+	)
+)
+
+; (addOne '(1 2 3 4))
+; (addOne '(2 4 6 8))
+; (addOne '())
+
+
+(define (lstOR l)
+	(cond ((null? l) #f)
+		((equal? #t (car l)) #t)
+		(else (lstOR (cdr l)))
+	)
+)
+
+; (lstOR '(#t #f))
+; (lstOR '(#f #f))
+; (lstOR '())
+
+(define (removeDup l)
+	(cond ((null? l) '())
+		((null? (cdr l)) l)
+		((equal? (car l) (cadr l)) (removeDup (cdr l)))
+		(else (cons (car l) (removeDup (cdr l))))
+	)
+)
+; (removeDup '(1 1 2))
+; (removeDup '(3 5 5 7 7 7 9))
+; (removeDup '())

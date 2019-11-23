@@ -1,0 +1,12 @@
+(define (el-graph->x-graph g)
+	(cond ((null? g) '())
+		; case to handle (z ())
+		((null? (cadar g)) '())
+		; case to handle (y (z))
+		((null? (cdadar g)) (cons (list (caar g) (caadar g)) (el-graph->x-graph (cdr g))))
+		; case to handle (x (y z))
+		(else (cons (list (caar g) (caadar g)) (el-graph->x-graph (cons (list (caar g) (cdadar g)) (cdr g)))))
+	)
+)
+
+; (el-graph->x-graph '((x (y z)) (y (z)) (z ())))
